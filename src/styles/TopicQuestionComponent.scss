@@ -1,0 +1,25 @@
+.divcontainer{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  .topic {
+    width: 80rem;
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .question {
+    background-color: #E0FBFC;
+  }
+
+  .before {
+    background-color: #3D5A80;
+  }
+
+  .after {
+    background-color: #EE6C4D;
+  }
+}

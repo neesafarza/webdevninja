@@ -1,0 +1,17 @@
+.divcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.question{
+  display: flex;
+  margin: auto;
+  background-color: pink;
+}
+
+.answer{
+  display: flex;
+  margin: auto;
+  background-color: blueviolet;
+}
