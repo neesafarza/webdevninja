@@ -1,7 +1,11 @@
+@import"colors.scss";
+
 .divcontainer{
   display: flex;
   justify-content: center;
   flex-direction: row;
+
+  box-shadow: 0px 8px 14px 0px rgba(31,30,31,0.78);
 
   .topic {
     width: 80rem;
@@ -12,14 +16,25 @@
   }
 
   .question {
-    background-color: #E0FBFC;
+    background-color: $question-bg-color;
   }
 
   .before {
-    background-color: #3D5A80;
+    background-color: $hidden-ans-color;
   }
 
   .after {
-    background-color: #EE6C4D;
+    background-color: $reveal-ans-color;
+  }
+
+  .reveal-button {
+    padding: 2rem;
+    border: none;
+    font-size: 1rem;
+    background-color: orange;
+    cursor: pointer;
+  }
+  .reveal-button:hover {
+    background-color: blue;
   }
 }

@@ -17,7 +17,7 @@ const TopicQuestionComponent = (props: TopicQuestionProps) => {
       </div>
       {props.reveal === false ? (
       <div className='topic before'>
-        <button onClick={() => props.setReveal(true)}>Click to reveal</button>
+        <button className='reveal-button' onClick={() => props.setReveal(true)}>Click to reveal</button>
         </div>
       ) : (
         <div className='topic after'>

@@ -6,7 +6,9 @@ const SingleTopicCard = (topicData: SingleTopic) => {
 
   return (
     <div className = 'single-card'>
+      <div className='image-container'>
       <img src={topicData.topicImg}/>
+      </div>
       <span>{topicData.topicName}</span>
     </div>
   )

@@ -1,17 +1,39 @@
-.divcontainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
+@import"colors.scss";
 
-.question{
-  display: flex;
-  margin: auto;
-  background-color: pink;
-}
+.card-page {
+  box-shadow: 2px 4px 7px -1px rgba(31,30,31,1);
+  // display: flex;
+  .footer {
 
-.answer{
-  display: flex;
-  margin: auto;
-  background-color: blueviolet;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    
+    .next-button {
+      background-color :$hidden-ans-color;
+      color: white;
+    }
+    .next-button:hover {
+      background-color: $button-active-color
+    }
+
+    .back-button {
+      background-color: $question-bg-color;
+    }
+
+    .back-button:hover {
+      background-color: $button-active-color;
+    }
+
+    box-shadow: 2px 4px 7px -1px rgba(31,30,31,1);
+
+    button {
+      font-size: 1.3rem;
+      font-weight: normal;
+      height: 100%;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+    }
+  }
 }

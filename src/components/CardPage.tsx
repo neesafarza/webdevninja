@@ -1,81 +1,77 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TopicQuestionComponent from "./TopicQuestionComponent";
+import '../styles/CardPage.scss'
+import { getQuestions } from "../service/ApiService";
+import { TopicQuestion } from "../interfaces/topics";
 
 type Params = {
-  id: string | undefined,
+  id: string,
 }
 
 const CardPage = () => {
 
-  const topicId  = useParams<Params>().id;
+  const topicId  = parseInt(useParams<Params>().id);
 
-  const questions = [
-    {
-      question: "hello",
-      answer: "world",
-    },
-    {
-      question: "hello1",
-      answer: "world1",
-    },
-    {
-      question: "hello2",
-      answer: "world2",
-    },
-    {
-      question: "hello3",
-      answer: "world3",
-    },
-    {
-      question: "hello4",
-      answer: "world4",
-    },
-    {
-      question: "hello5",
-      answer: "world5",
-    },
-    {
-      question: "hello6",
-      answer: "world6",
-    },
-    {
-      question: "hello7",
-      answer: "world7",
-    },
-  ];
+  const [questions, setQuestions] = useState<TopicQuestion[]>([]);
+  
 
   const [reveal, setReveal] = useState(false);
 
-  useEffect(() => {
-    // put your backend call for questions here
-  }, []);
+  useEffect( () => {
+    getListOfQuestions();
+  }, [questions]);
+
+
+  const getListOfQuestions = (): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      getQuestions(topicId)
+      .then((res) => {
+        setQuestions(res);
+        resolve();
+      }).catch((err) => {
+        console.error(err);
+        reject(err);
+      });
+    })
+  }
 
 
   const [index, setIndex] = useState(0);
 
   const fetchQuestion = () => {
-    setCurrentQustion(questions[index]);
-    setIndex(index + 1)
-    setReveal(false)
+    if(questions && index > questions.length - 2) {
+      getListOfQuestions().then(() => {
+        setIndex(0)
+        setReveal(false)
+      });
+    } else {
+      setIndex(index + 1)
+        setReveal(false)
+    }
   };
 
-  const [currentQuestion, setCurrentQustion] = useState({
-    question: "hello",
-    answer: "world",
-  });
   const topicProps = {
-    currentQuestion,
+    currentQuestion: questions[index],
     reveal,
     setReveal
   }
 
   return (
     <div className="card-page">
-      <div>
+      {
+        topicProps.currentQuestion ? <div>
         <TopicQuestionComponent {...topicProps}></TopicQuestionComponent>
+      </div> : 
+      <div>
+        Loading....
       </div>
-      <button onClick={fetchQuestion}> Next </button>
+      }
+      
+      <div className='footer'>
+        <button className='back-button' onClick={fetchQuestion}> Previous </button>        
+        <button className='next-button' onClick={fetchQuestion}> Next </button>        
+      </div>
     </div>
   );
 };
