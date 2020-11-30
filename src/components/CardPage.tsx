@@ -4,6 +4,7 @@ import TopicQuestionComponent from "./TopicQuestionComponent";
 import '../styles/CardPage.scss'
 import { getQuestions } from "../service/ApiService";
 import { TopicQuestion } from "../interfaces/topics";
+import Button from "react-bootstrap/Button";
 
 type Params = {
   id: string,
@@ -14,9 +15,10 @@ const CardPage = () => {
   const topicId  = parseInt(useParams<Params>().id);
 
   const [questions, setQuestions] = useState<TopicQuestion[]>([]);
-  
 
   const [reveal, setReveal] = useState(false);
+
+  const [index, setIndex] = useState(0);
 
   useEffect( () => {
     getListOfQuestions();
@@ -36,8 +38,7 @@ const CardPage = () => {
     })
   }
 
-
-  const [index, setIndex] = useState(0);
+  console.log(questions)
 
   const fetchQuestion = () => {
     if(questions && index > questions.length - 2) {
@@ -69,8 +70,12 @@ const CardPage = () => {
       }
       
       <div className='footer'>
-        <button className='back-button' onClick={fetchQuestion}> Previous </button>        
-        <button className='next-button' onClick={fetchQuestion}> Next </button>        
+        <Button 
+        onClick={fetchQuestion}
+        > Previous </Button>        
+        <Button 
+        onClick={fetchQuestion}
+        > Next </Button>        
       </div>
     </div>
   );

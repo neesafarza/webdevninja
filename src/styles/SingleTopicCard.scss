@@ -1,3 +1,5 @@
+@import"colors.scss";
+
 .single-card {
   display: flex;
   flex-direction: column;
@@ -29,5 +31,5 @@
 
 }
 .single-card:hover {
-  background-color: green;
+  background-color: $button-active-color;
 }

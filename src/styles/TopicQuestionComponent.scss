@@ -4,7 +4,8 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-
+  background: rgb(152,193,217);
+  background: radial-gradient(circle, rgba(152,193,217,1) 0%, rgba(224,251,252,1) 100%);
   box-shadow: 0px 8px 14px 0px rgba(31,30,31,0.78);
 
   .topic {
@@ -16,7 +17,7 @@
   }
 
   .question {
-    background-color: $question-bg-color;
+    background-color: light;
   }
 
   .before {
